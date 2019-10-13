@@ -10,7 +10,26 @@
 */
 int fizzbuzz(int n)
 {
-
+    for (int i = 0; i < n; i++)
+    {
+        if (i % 3 == 0 && i % 5 == 0)
+        {
+            printf("fizzBuzz %d \n", i);
+        }
+        else if (i % 5 == 0)
+        {
+            printf("fizzBuzz %d \n", i);
+        }
+        else if (i % 3 == 0)
+        {
+            printf("fizzBuzz %d \n", i);
+        }
+        else
+        {
+            printf("error");
+        }
+    }
+    return 0;
 }
 
 #ifndef TESTING
