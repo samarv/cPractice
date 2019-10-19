@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <strings.h>
 
 /*
     Given a character pointer x (that points to an array of chars), and a
@@ -15,7 +16,11 @@
 */
 void string_copy(char *x, char *y)
 {
-
+    int len = strlen(y);
+    for (int i = 0; i < len; i++)
+    {
+        x[i] = y[i];
+    }
 }
 
 /*
@@ -28,7 +33,15 @@ void string_copy(char *x, char *y)
 */
 char *find_char(char *str, char c)
 {
-
+    int i = 0;
+    while (str[i])
+    {
+        if (str[i] == c)
+        {
+            return &c;
+        }
+        i++;
+    }
 }
 
 /*
@@ -41,16 +54,27 @@ char *find_char(char *str, char c)
 */
 char *find_string(char *haystack, char *needle)
 {
-
+    int len = strlen(haystack);
+    int nlen = strlen(needle);
+    int *lastAdd;
+    for (int i = 0; i < nlen; i++)
+    {
+        char *lastAdd = find_char(haystack, needle[i]);
+        printf("%c\n", lastAdd);
+    }
+    return find_char(haystack, needle[0]);
 }
 
 #ifndef TESTING
 int main(void)
 {
+    char buffer[7];
+    string_copy(buffer, "Hello!");
+    printf("%s\n", buffer); // Prints "Hello!"
     char *found_char = find_char("hello", 'e');
+    printf("Found char: %c\n", *found_char);
     char *found_string = find_string("world", "or");
 
-    printf("Found char: %s\n", found_char);
     printf("Found string: %s\n", found_string);
 
     return 0;
